@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 
 
 //connect to MongoDB
-mongoose.connect('mongodb://localhost/testForAuth');
+mongoose.connect('mongodb://localhost/testForAuth', {useNewUrlParser: true});
 var db = mongoose.connection;
 
 //handle mongo error
@@ -138,6 +138,7 @@ app.use(function (err, req, res, next) {
   res.render('index.hbs', {err});
 });
 
+// Return if err does exist
 hbs.registerHelper('ifErr', function(err, options) {
   if(err) {
     return options.fn(this);
