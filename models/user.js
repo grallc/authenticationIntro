@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
+const validator = require('validator');
 
 var UserSchema = new mongoose.Schema({
   email: {
@@ -7,6 +8,10 @@ var UserSchema = new mongoose.Schema({
     unique: true,
     required: true,
     trim: true
+    // validate: {
+    //   validator: validator.isEmail,
+    //   message: "'{VALUE}' is not a valid email"
+    // }
   },
   username: {
     type: String,
@@ -48,6 +53,9 @@ UserSchema.statics.authenticate = function (email, password, callback) {
 //hashing a password before saving it to the database
 UserSchema.pre('save', function (next) {
   var user = this;
+  if(!validator.isEmail(this.email)){
+    return next(new Error('Please specify a valid email'));
+  }
   bcrypt.hash(user.password, 10, function (err, hash) {
     if (err) {
       return next(err);

@@ -17,6 +17,6 @@
     "express-session": "^1.15.2",
     "hbs": "^4.0.1",
     "mongoose": "^5.2.9",
-    "nodemon": "^1.11.0"
+    "validator": "^10.7.0"
   }
 }
