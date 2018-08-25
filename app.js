@@ -138,6 +138,12 @@ app.use(function (err, req, res, next) {
   res.render('index.hbs', {err});
 });
 
+hbs.registerHelper('ifErr', function(err, options) {
+  if(err) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
 
 // listen on port 3000
 app.listen(3000, function () {
