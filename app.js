@@ -135,8 +135,7 @@ app.get('/logout', function (req, res, next) {
 // define as the last app.use callback
 app.use(function (err, req, res, next) {
   res.status(err.status || 500);
-  //res.send(err.message);
-  console.log(err);
+  res.render('index.hbs', {err});
 });
 
 
