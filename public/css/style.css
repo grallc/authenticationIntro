@@ -48,6 +48,17 @@ h1 {
     background-size: cover;
 }
 
+#info {
+    background-color: red;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    margin-top: -40px;
+    text-align: center;
+    font-size: 20px;
+}
+
+
 /*--signin-form--*/
 .w3 {
     float: left;
